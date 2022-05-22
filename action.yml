@@ -1,4 +1,4 @@
-name: 'Trigger CircleCI Pipeline'
+name: 'Trigger CircleCI Pipeline with Configurable Inputs'
 description: 'Trigger pipelines on CircleCI for any event on GitHub.'
 branding:
     icon: "check-circle"
@@ -6,7 +6,7 @@ branding:
 inputs:
   GHA_Meta:
     required: false
-    description: 'An optional additional metadata parameter. Will be available on the CircleCI pipeline as GHA_Meta'
+    description: 'An optional additional JSON metadata parameter. Every key in the provided JSON will be available on the CircleCI pipeline as a parameter'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
