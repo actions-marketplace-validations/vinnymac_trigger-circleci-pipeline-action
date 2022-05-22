@@ -42,9 +42,15 @@ const parameters = {
   GHA_Event: context.eventName,
 };
 
-const metaData = getInput("GHA_Meta");
-if (metaData.length > 0) {
-  Object.assign(parameters, { GHA_Meta: metaData });
+const metaDataInput = getInput("GHA_Meta");
+if (metaDataInput.length > 0) {
+  let metaData = {};
+  try {
+    metaData = JSON.parse(metaDataInput);
+  } catch (err) {
+    console.error(err);
+  }
+  Object.assign(parameters, metaData);
 }
 
 const body = {

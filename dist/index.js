@@ -12734,9 +12734,15 @@ const parameters = {
   GHA_Event: _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.eventName,
 };
 
-const metaData = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("GHA_Meta");
-if (metaData.length > 0) {
-  Object.assign(parameters, { GHA_Meta: metaData });
+const metaDataInput = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("GHA_Meta");
+if (metaDataInput.length > 0) {
+  let metaData = {};
+  try {
+    metaData = JSON.parse(metaDataInput);
+  } catch (err) {
+    console.error(err);
+  }
+  Object.assign(parameters, metaData);
 }
 
 const body = {
