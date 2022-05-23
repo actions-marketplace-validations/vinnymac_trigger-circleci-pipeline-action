@@ -83,7 +83,9 @@ axios
   .then((response) => {
     startGroup("Successfully triggered CircleCI Pipeline");
     info(`CircleCI API Response: ${JSON.stringify(response.data)}`);
-    info(`Workflow URL: https://app.circleci.com/pipelines/gh/${repoOrg}/${repoName}/${response.data.number}`);
+    info(
+      `Workflow URL: https://app.circleci.com/pipelines/gh/${repoOrg}/${repoName}/${response.data.number}`
+    );
     endGroup();
   })
   .catch((error) => {
